@@ -36,5 +36,14 @@ if (!user) {
 
 sendForm.addEventListener('submit', (e)=> {
 e.preventDefault()
-    // code here for sending
+
+let bodyData = {title: "Hello", recipient: "447804521377", link: "https://google.com"};
+console.log(JSON.stringify(bodyData))
+fetch("https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS", {
+  method: "POST", 
+  mode: 'no-cors',
+  body: JSON.stringify(bodyData)
+}).then(res => {
+  console.log("Request complete! response:", res);
+});
 })

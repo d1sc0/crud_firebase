@@ -1,5 +1,6 @@
-const functions = require("firebase-functions");
-const Vonage = require('@vonage/server-sdk')
+const functions = require('firebase-functions');
+const Vonage = require('@vonage/server-sdk');
+const escapeHtml = require('escape-html');
 const config = functions.config();
 const vonageKey = config.env.vonage.apiKey
 const vonageSecret = config.env.vonage.apiSecret
@@ -11,9 +12,12 @@ const vonage = new Vonage({
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 
 exports.sendSMS = functions.https.onRequest((request, response) => {
-let from = "Send Pic Test"
-let to = "447804521377"
-let text = 'A text message sent using the Vonage SMS API https://google.com'
+let title = escapeHtml(request.body.title);
+let from = "SendPics"
+let to = escapeHtml(request.body.recipient);
+to= parseInt(to)
+let link = escapeHtml(request.body.link);
+let text = `Hello somebody sent you this ${title} picture. You can see it here - ${link}`
 vonage.message.sendSms(from, to, text, (err, responseData) => {
     if (err) {
         functions.logger.info(err, {structuredData: true});
