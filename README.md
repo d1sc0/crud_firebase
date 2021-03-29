@@ -22,7 +22,7 @@ note: I've excluded the raw bulm files from this repo.
 ## Next
 
 11. Create a page that shows a single picture and send it
-12. Use a cloud function to send a link to a Dick Pic
+12. Use a cloud function to send a link to a Send Pic
 
 ## Later
 
