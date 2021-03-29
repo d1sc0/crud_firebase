@@ -30,7 +30,5 @@ vonage.message.sendSms(from, to, text, (err, responseData) => {
         }
     }
 })
-
 response.sendStatus(200)
-
-});
+})

@@ -1,4 +1,4 @@
-const sendForm= document.querySelector('#confirm-send')
+const sendForm = document.querySelector('#confirm-send')
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString)
 const id = urlParams.get('id')
@@ -38,21 +38,30 @@ if (!user) {
 
 sendForm.addEventListener('submit', (e)=> {
 e.preventDefault()
-
-fetch('https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS', {
-  method: 'POST', 
-  mode: 'no-cors',
-  headers: {
-      'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-        sms: {
-            title: imageTitle,
-            recipient: "447804521377",
-            link: imageUrl
-        }
-    })
-}).then(res => {
-  console.log(res);
-});
+let recipient = document.querySelector('.phoneNo').value
+postSMS(recipient)
+  
 })
+
+// Post to the firebase cloud function
+  async function postSMS(recipient) {
+    try {
+      const response = await fetch('https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS', {
+        method: 'POST', 
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+              sms: {
+                  title: imageTitle,
+                  recipient: recipient,
+                  link: imageUrl
+              }})
+      })
+        const res = await response;
+        console.log(res)
+    } catch (error) {
+      console.log('whooops!', error);
+    }
+  }
