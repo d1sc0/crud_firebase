@@ -11,13 +11,15 @@ const vonage = new Vonage({
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 
 exports.sendSMS = functions.https.onRequest((request, response) => {
-var title = request.body.sms.title;
+
+req = JSON.parse(request.body);
+var title = req.sms.title
 var from = "SendPics";
-var to = request.body.sms.recipient;
-var link = request.body.sms.link;
+var to = req.sms.recipient;
+var link = req.sms.link;
 var text = `Hello somebody sent you this ${title} picture. You can see it here - ${link}`;
-functions.logger.info(to, {structuredData: true});
-functions.logger.info(title, {structuredData: true});
+functions.logger.info(request.body);
+
 
 vonage.message.sendSms(from, to, text, (err, responseData) => {
     if (err) {

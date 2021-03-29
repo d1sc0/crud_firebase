@@ -45,7 +45,7 @@ fetch('https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS', {
   },
   body: JSON.stringify({
         sms: {
-            title: "Hello",
+            title: "Hello Stu",
             recipient: "447804521377",
             link: "https://google.com"
         }
