@@ -1,4 +1,4 @@
-A bit of an experiment using plain old javascript and multiple html files to explore firebase - plan to use firestore, authentication, storage an cloud functions.
+A bit of an experiment using plain old javascript and multiple html files to explore firebase - plan to use firestore, authentication, storage an cloud functions. No react frameworks of fancy single page apps.
 
 SO far the app allows an authenticated user to upload photos, delete them and send a link to a specific photo page via SMS
 
