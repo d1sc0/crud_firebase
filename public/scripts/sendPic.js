@@ -37,12 +37,19 @@ if (!user) {
 sendForm.addEventListener('submit', (e)=> {
 e.preventDefault()
 
-let bodyData = {title: "Hello", recipient: "447804521377", link: "https://google.com"};
-console.log(JSON.stringify(bodyData))
-fetch("https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS", {
-  method: "POST", 
+fetch('https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS', {
+  method: 'POST', 
   mode: 'no-cors',
-  body: JSON.stringify(bodyData)
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+        sms: {
+            title: "Hello",
+            recipient: "447804521377",
+            link: "https://google.com"
+        }
+    })
 }).then(res => {
   console.log("Request complete! response:", res);
 });
