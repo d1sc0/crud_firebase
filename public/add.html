@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Picture</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/2c92217e58.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-storage.js"></script>
+  <script src="scripts/firebase-config.js"></script>
+</head>
+
+<body>
+
+  <!--home section -->
+  <div class="home">
+    <div class="container">
+      <div class="column is-6 is-offset-3">
+        <section class="addPic p-6 box">
+          <h2 class="title mb-5">Submit Photo</h2>
+          <!--submission form-->
+          <div class="notification is-danger is-hidden">
+            <div class="error"></div>
+            <button class="delete"></button>
+          </div>
+          <form class="mb-6" id="add-pic-form">
+            <div class="field">
+              <label class="label">Image Title</label>
+              <div class="control">
+                <input class="input imageTitle" type="text" placeholder="Fill Murray" required />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Upload photo</label>
+              <div id="file-upload" class="file has-name">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="file-upload" required />
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                  <span class="file-name">
+                    filename.png
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="progress-bar is-hidden"><progress class="progress is-large is-primary" value="0"
+                  max="100"></progress>
+              </div>
+            </div>
+            <button class="button is-primary submit-btn"><strong>Submit</strong></button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!--end main section -->
+
+  <script>
+    const fileInput = document.querySelector('#file-upload input[type=file]');
+    fileInput.onchange = () => {
+      if (fileInput.files.length > 0) {
+        const fileName = document.querySelector('#file-upload .file-name');
+        fileName.textContent = fileInput.files[0].name;
+      }
+    }
+  </script>
+  <script src="scripts/addPic.js"></script>
+</body>
+
+</html>
