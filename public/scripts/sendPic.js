@@ -45,12 +45,12 @@ fetch('https://us-central1-crud-firebase-c1897.cloudfunctions.net/sendSMS', {
   },
   body: JSON.stringify({
         sms: {
-            title: "Hello Stu",
+            title: "lovely hands",
             recipient: "447804521377",
-            link: "https://google.com"
+            link: "https://firebasestorage.googleapis.com/v0/b/crud-firebase-c1897.appspot.com/o/photos%2FivBfPa5j9edtsFMCvxxLSLBGABK2%2Fhands.jpg?alt=media&token=5c8db61c-0d21-4243-9f41-71e5b6e671cd"
         }
     })
 }).then(res => {
-  console.log("Request complete! response:", res);
+  console.log("response:", res);
 });
 })

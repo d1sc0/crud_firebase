@@ -18,19 +18,18 @@ var from = "SendPics";
 var to = req.sms.recipient;
 var link = req.sms.link;
 var text = `Hello somebody sent you this ${title} picture. You can see it here - ${link}`;
-functions.logger.info(request.body);
-
 
 vonage.message.sendSms(from, to, text, (err, responseData) => {
     if (err) {
+        response.sendStatus(500)
         functions.logger.info(err, {structuredData: true});
     } else {
+        response.sendStatus(200)
         if(responseData.messages[0]['status'] === "0") {
             functions.logger.info("Message sent successfully", {structuredData: true});
-            response.send("Message sent successfully!");
         } else {
+            response.sendStatus(500)
             functions.logger.info(`Message failed with error: ${responseData.messages[0]['error-text']}`, {structuredData: true});
-            response.send(`Message failed with error: ${responseData.messages[0]['error-text']}`);
         }
     }
 })
