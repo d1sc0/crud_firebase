@@ -4,7 +4,7 @@ SO far the app allows an authenticated user to upload photos, delete them and se
 
 note: I've excluded the raw bulm files from this repo.
 
-# Things to do: Send Pic
+# Send Pic Prototype
 
 ## Done
 
