@@ -11,11 +11,11 @@ const vonage = new Vonage({
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 
 exports.sendSMS = functions.https.onRequest((request, response) => {
-let title = request.body.sms.title;
-let from = "SendPics";
-let to = request.body.sms.recipient;
-let link = request.body.sms.link;
-let text = `Hello somebody sent you this ${title} picture. You can see it here - ${link}`;
+var title = request.body.sms.title;
+var from = "SendPics";
+var to = request.body.sms.recipient;
+var link = request.body.sms.link;
+var text = `Hello somebody sent you this ${title} picture. You can see it here - ${link}`;
 functions.logger.info(to, {structuredData: true});
 functions.logger.info(title, {structuredData: true});
 
