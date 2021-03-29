@@ -1,5 +1,7 @@
 A bit of an experiment using plain old javascript and multiple html files to explore firebase - plan to use firestore, authentication, storage an cloud functions.
 
+SO far the app allows an authenticated user to upload photos, delete them and send a link to a specific photo page via SMS
+
 note: I've excluded the raw bulm files from this repo.
 
 # Things to do: Send Pic
